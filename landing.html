@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Photons - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .login-container button:hover {
+            background-color: #e64a19;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="submit">Login</button>
+            <p id="errorMessage" class="error"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Basic Email Regex
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            // Basic Validation
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                return;
+            }
+            if (password.length < 6) {
+                errorMessage.textContent = "Password must be at least 6 characters long.";
+                return;
+            }
+
+            errorMessage.textContent = ""; // Clear error message
+            alert("Login successful! Redirecting to the pet shop...");
+            // Redirect to the main page (first.html)
+            window.location.href = "first.html";
+        });
+    </script>
+</body>
+</html>
